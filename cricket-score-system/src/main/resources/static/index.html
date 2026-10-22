@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CricketLive - Score Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">&#127951;</span>
+      <h1>Cricket<span>Live</span></h1>
+    </div>
+    <div class="conn" id="conn" role="status">
+      <span class="dot"></span><span id="connText">Connecting...</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel" aria-label="Matches">
+      <div class="panel-head">
+        <h2>Matches</h2>
+        <button id="newMatchBtn" class="btn small primary" type="button">+ New match</button>
+      </div>
+      <div class="chips" id="filters">
+        <button class="chip active" data-filter="ALL" type="button">All</button>
+        <button class="chip" data-filter="LIVE" type="button">Live</button>
+        <button class="chip" data-filter="UPCOMING" type="button">Upcoming</button>
+        <button class="chip" data-filter="COMPLETED" type="button">Completed</button>
+      </div>
+      <div id="matchList" class="match-list"></div>
+    </aside>
+
+    <section class="panel detail" id="detail" aria-live="polite">
+      <div class="empty">Select a match to see the live score.</div>
+    </section>
+
+    <aside class="panel" aria-label="Top performers">
+      <h2>Top performers</h2>
+      <h3>Most runs</h3>
+      <ol class="leaders" id="topBat"></ol>
+      <h3>Most wickets</h3>
+      <ol class="leaders" id="topBowl"></ol>
+    </aside>
+  </main>
+
+  <dialog id="newMatchDialog">
+    <form id="newMatchForm" method="dialog">
+      <h2>Create a match</h2>
+      <label>Team 1 <select id="team1" required></select></label>
+      <label>Team 2 <select id="team2" required></select></label>
+      <label>Overs per side <input id="overs" type="number" min="1" max="50" value="20" required></label>
+      <label>Venue <input id="venue" type="text" maxlength="60" placeholder="Cricket Arena"></label>
+      <label class="check"><input id="simulate" type="checkbox" checked> Simulate ball-by-ball automatically</label>
+      <p class="form-error" id="formError"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="cancelNew">Cancel</button>
+        <button type="submit" class="btn primary">Create</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="alert"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
